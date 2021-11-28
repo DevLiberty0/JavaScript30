@@ -24,6 +24,9 @@
     }
 
     .panels {
+      width: 100vw;
+      display: flex;
+      flex-direction:row;
       min-height: 100vh;
       overflow: hidden;
     }
@@ -43,6 +46,7 @@
       font-size: 20px;
       background-size: cover;
       background-position: center;
+      flex:1;
     }
 
     .panel1 { background-image:url(https://source.unsplash.com/gYl-UtwNg_I/1500x1500); }
@@ -105,10 +109,23 @@
   </div>
 
   <script>
+    const panels = document.querySelectorAll(".panel");
 
+    function changeWidth(obj) {
+      obj.onclick = function() {
+        if(obj.style.flex == "3 1 0%") {
+          obj.style.flex = "1";
+        } else {
+          panels.forEach((e) => e.style.flex = "1");
+          obj.style.flex = "3";
+        }
+      }
+    }
+    panels.forEach(changeWidth);
   </script>
 
 
 
 </body>
 </html>
+
