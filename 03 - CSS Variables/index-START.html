@@ -21,7 +21,11 @@
   <img src="https://source.unsplash.com/7bwQXzbF6KE/800x500">
 
   <style>
-
+    :root {
+      --spacing: 10px;
+      --blur: 10px;
+      --color: #ffc600;
+    }
     /*
       misc styles, nothing to do with CSS variables
     */
@@ -42,9 +46,23 @@
     input {
       width: 100px;
     }
+
+    img {
+      padding: var(--spacing);
+      filter: blur(var(--blur));
+      background-color: var(--color);
+    }
   </style>
 
   <script>
+    const image = document.querySelector("img");
+    const spacingRange = document.querySelector("#spacing");
+    const blurRange = document.querySelector("#blur");
+    const frameColor = document.querySelector("#base");
+
+    spacingRange.onchange = () => image.style.setProperty("--spacing", `${spacingRange.value}px`);
+    blurRange.onchange = () => image.style.setProperty("--blur", `${blurRange.value}px`);
+    frameColor.onchange = () => image.style.setProperty("--color", frameColor.value);
   </script>
 
 </body>
